@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CQCViewer.Shared.HttpClients;
+using CQCViewer.Shared.Interfaces.Services;
+using CQCViewer.Shared.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +27,12 @@ namespace CQCViewer.UI.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddSingleton<IProvidersSummaryServices, ProviderSummaryServices>();
+            services.AddSingleton<IProviderDetailsServices, ProviderDetailsServices>();
+
+            services.AddHttpClient<ProviderDetailHttpClient>();
+            services.AddHttpClient<ProviderSummaryHttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
