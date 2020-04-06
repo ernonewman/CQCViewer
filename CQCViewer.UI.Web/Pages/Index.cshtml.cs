@@ -27,7 +27,7 @@ namespace CQCViewer.UI.Web.Pages
 
         public async Task<IActionResult> OnGetAsync()
         {
-            ProvidersSummary = await _providerSummaryServices.GetProviderSummary();
+            ProvidersSummary = await _providerSummaryServices.GetProviderSummary(string.Empty);
 
             return Page();
         }

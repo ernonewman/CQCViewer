@@ -52,7 +52,7 @@ namespace CQCViewer.UI.ConsoleApp
                     var myService = services.GetRequiredService<IProvidersSummaryServices>();
                     var providerDetailsServices = services.GetRequiredService<IProviderDetailsServices>();
 
-                    var providersSummary = await myService.GetProviderSummary();
+                    var providersSummary = await myService.GetProviderSummary(string.Empty);
 
                     foreach (var item in providersSummary.providers.ToList().Take(10))
                     {

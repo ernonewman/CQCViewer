@@ -17,7 +17,7 @@ namespace CQCViewer.Shared.HttpClients
             _client = client;
         }
 
-        public async Task<ProvidersSummary> GetContentFromClient()
+        public async Task<ProvidersSummary> GetContentFromClient(string providerSummaryUrl = "")
         {
             try
             {
@@ -27,7 +27,7 @@ namespace CQCViewer.Shared.HttpClients
                 };
 
 
-                var json = await _client.GetStreamAsync("https://api.cqc.org.uk/public/v1/providers").ConfigureAwait(false);
+                var json = await _client.GetStreamAsync(string.IsNullOrWhiteSpace(providerSummaryUrl) ? "https://api.cqc.org.uk/public/v1/providers" : providerSummaryUrl).ConfigureAwait(false);
 
                 return await JsonSerializer.DeserializeAsync<ProvidersSummary>(json, options);
             }

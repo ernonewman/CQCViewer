@@ -8,6 +8,6 @@ namespace CQCViewer.Shared.Interfaces.Services
 {
     public interface IProvidersSummaryServices
     {
-        Task<ProvidersSummary> GetProviderSummary();
+        Task<ProvidersSummary> GetProviderSummary(string providerSummaryUrl);
     }
 }

@@ -16,9 +16,9 @@ namespace CQCViewer.Shared.Services
             _client = client;
         }
 
-        public async Task<ProvidersSummary> GetProviderSummary()
+        public async Task<ProvidersSummary> GetProviderSummary(string providerSummaryUrl)
         {
-            return await _client.GetContentFromClient().ConfigureAwait(false);
+            return await _client.GetContentFromClient(providerSummaryUrl).ConfigureAwait(false);
         }
     }
 }
