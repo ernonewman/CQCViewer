@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CQCViewer.Shared
+namespace CQCViewer.Shared.Models
 {
     public class ProvidersSummary
     {
