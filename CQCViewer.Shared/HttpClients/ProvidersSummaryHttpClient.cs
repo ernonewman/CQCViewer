@@ -17,7 +17,7 @@ namespace CQCViewer.Shared.HttpClients
             _client = client;
         }
 
-        public async Task<ProviderSummary> GetContentFromClient()
+        public async Task<ProvidersSummary> GetContentFromClient()
         {
             try
             {
@@ -29,7 +29,7 @@ namespace CQCViewer.Shared.HttpClients
 
                 var json = await _client.GetStreamAsync("https://api.cqc.org.uk/public/v1/providers").ConfigureAwait(false);
 
-                return await JsonSerializer.DeserializeAsync<ProviderSummary>(json, options);
+                return await JsonSerializer.DeserializeAsync<ProvidersSummary>(json, options);
             }
             catch (HttpRequestException ex)
             {
