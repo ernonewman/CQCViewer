@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace CQCViewer.Shared.Models
 {
     public class ProviderDetail
     {
+        [Key]
         public string providerId { get; set; }
         //public string[] locationIds { get; set; }
         public string organisationType { get; set; }
-        public string ownershipType { get; set; }
-        public string type { get; set; }
+        //public string ownershipType { get; set; }
+        //public string type { get; set; }
         //public string brandId { get; set; }
         //public string brandName { get; set; }
         //public string uprn { get; set; }
         public string name { get; set; }
         public string alsoKnownAs { get; set; }
         public string registrationStatus { get; set; }
-        public string registrationDate { get; set; }
+        //public string registrationDate { get; set; }
         public string website { get; set; }
         public string postalAddressLine1 { get; set; }
         public string postalAddressLine2 { get; set; }
@@ -25,12 +27,12 @@ namespace CQCViewer.Shared.Models
         public string postalAddressCounty { get; set; }
         public string region { get; set; }
         public string postalCode { get; set; }
-        public float onspdLatitude { get; set; }
-        public float onspdLongitude { get; set; }
+        //public float onspdLatitude { get; set; }
+        //public float onspdLongitude { get; set; }
         public string mainPhoneNumber { get; set; }
         //public string inspectionDirectorate { get; set; }
         //public string constituency { get; set; }
-        public string localAuthority { get; set; }
+        //public string localAuthority { get; set; }
         //public Lastinspection lastInspection { get; set; }
         //public Lastreport lastReport { get; set; }
         //public object[] contacts { get; set; }

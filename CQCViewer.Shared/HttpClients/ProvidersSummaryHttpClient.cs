@@ -27,7 +27,7 @@ namespace CQCViewer.Shared.HttpClients
                 };
 
 
-                var json = await _client.GetStreamAsync(string.IsNullOrWhiteSpace(providerSummaryUrl) ? "https://api.cqc.org.uk/public/v1/providers" : providerSummaryUrl).ConfigureAwait(false);
+                var json = await _client.GetStreamAsync(string.IsNullOrWhiteSpace(providerSummaryUrl) ? "https://api.cqc.org.uk/public/v1/providers?perPage=10000" : $"https://api.cqc.org.uk/public/v1{providerSummaryUrl}").ConfigureAwait(false);
 
                 return await JsonSerializer.DeserializeAsync<ProvidersSummary>(json, options);
             }
