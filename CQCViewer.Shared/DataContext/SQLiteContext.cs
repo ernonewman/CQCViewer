@@ -7,6 +7,10 @@ namespace CQCViewer.Shared.DataContext
     public class SQLiteContext : DbContext
     {
         string _dbLocation;
+        public SQLiteContext()
+        {
+        }
+
         public SQLiteContext(string dbLocation = "cqc.db")
         {
             _dbLocation = dbLocation;
@@ -14,6 +18,15 @@ namespace CQCViewer.Shared.DataContext
         public DbSet<ProviderDetail> ProviderDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source={_dbLocation}");
+        {
+            if (string.IsNullOrWhiteSpace(_dbLocation))
+            {
+                options.UseSqlite("Data Source=cqc.db");
+            }
+            else
+            {
+                options.UseSqlite($"Data Source={_dbLocation}");
+            }
+        }
     }
 }

@@ -69,10 +69,16 @@ namespace CQCViewer.UI.ConsoleApp
                         {
                             foreach(var detail in allDetails)
                             {
-                                Console.WriteLine(counter);
-                                var apiDetail = await providerDetailsServices.GetProviderDetails(detail.providerId);
+                                try
+                                {
+                                    Console.WriteLine(counter);
+                                    var apiDetail = await providerDetailsServices.GetProviderDetails(detail.providerId);
 
-                                UpdateIndividualDetails(detail, apiDetail, db);
+                                    UpdateIndividualDetails(detail, apiDetail, db);
+                                }
+                                catch (Exception ex)
+                                {
+                                }
                                 counter++;
                             }
                         }
@@ -109,18 +115,20 @@ namespace CQCViewer.UI.ConsoleApp
 
         private static async void UpdateIndividualDetails(ProviderDetail detail, ProviderDetail apiDetail, SQLiteContext dbContext)
         {
-            detail.organisationType = apiDetail.organisationType;
-            detail.name = apiDetail.name;
-            detail.alsoKnownAs = apiDetail.alsoKnownAs;
-            detail.registrationStatus = apiDetail.registrationStatus;
-            detail.website = apiDetail.website;
-            detail.postalAddressLine1 = apiDetail.postalAddressLine1;
-            detail.postalAddressLine2 = apiDetail.postalAddressLine2;
-            detail.postalAddressTownCity = apiDetail.postalAddressTownCity;
-            detail.postalAddressCounty = apiDetail.postalAddressCounty;
-            detail.region = apiDetail.region;
-            detail.postalCode = apiDetail.postalCode;
-            detail.mainPhoneNumber = apiDetail.mainPhoneNumber;
+            detail.locationIdsAsAString = string.Join(", ", apiDetail.locationIds);
+            // detail.organisationType = apiDetail.organisationType;
+            // detail.name = apiDetail.name;
+            // detail.alsoKnownAs = apiDetail.alsoKnownAs;
+            // detail.registrationStatus = apiDetail.registrationStatus;
+            detail.registrationDate = apiDetail.registrationDate;
+            // detail.website = apiDetail.website;
+            // detail.postalAddressLine1 = apiDetail.postalAddressLine1;
+            // detail.postalAddressLine2 = apiDetail.postalAddressLine2;
+            // detail.postalAddressTownCity = apiDetail.postalAddressTownCity;
+            // detail.postalAddressCounty = apiDetail.postalAddressCounty;
+            // detail.region = apiDetail.region;
+            // detail.postalCode = apiDetail.postalCode;
+            // detail.mainPhoneNumber = apiDetail.mainPhoneNumber;
 
             dbContext.ProviderDetails.Update(detail);
             dbContext.SaveChanges();

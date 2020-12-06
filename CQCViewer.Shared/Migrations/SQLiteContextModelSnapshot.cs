@@ -23,6 +23,12 @@ namespace CQCViewer.Shared.Migrations
                     b.Property<string>("alsoKnownAs")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("localAuthority")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("locationIdsAsAString")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("mainPhoneNumber")
                         .HasColumnType("TEXT");
 
@@ -48,6 +54,9 @@ namespace CQCViewer.Shared.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("region")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("registrationDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("registrationStatus")
